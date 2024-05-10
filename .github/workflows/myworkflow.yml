@@ -1,0 +1,39 @@
+# .github/workflows/install-windows-service.yml
+name: My Workflow
+
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  create_folder:
+    name: Create Folder on Desktop
+    runs-on: self-hosted
+
+    steps:
+      - name: Check out Repository
+        uses: actions/checkout@v2
+
+      - name: Create Folder on Desktop
+        shell: powershell
+        run: |
+          $DesktopPath = [System.Environment]::GetFolderPath('Desktop')
+          $FolderPath = Join-Path -Path $DesktopPath -ChildPath 'Eagle'
+          if (-Not (Test-Path $FolderPath)) {
+            New-Item -ItemType Directory -Path $FolderPath
+            Write-Output "Created folder: $FolderPath"
+          } else {
+            Write-Output "Folder already exists: $FolderPath"
+          }
+
+      - name: Verify Folder Creation
+        shell: powershell
+        run: |
+          $DesktopPath = [System.Environment]::GetFolderPath('Desktop')
+          $FolderPath = Join-Path -Path $DesktopPath -ChildPath 'Eagle'
+          if (Test-Path $FolderPath) {
+            Write-Output "Verification Successful: Folder found at $FolderPath"
+          } else {
+            Write-Output "Verification Failed: Folder not found at $FolderPath"
+          }

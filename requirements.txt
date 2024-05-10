@@ -1,0 +1,9 @@
+requests
+beautifulsoup4
+selenium
+python-dotenv
+lxml
+psutil
+azure-storage-blob
+pypiwin32
+pyinstaller
