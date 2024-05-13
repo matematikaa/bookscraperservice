@@ -51,7 +51,7 @@ jobs:
       - name: Starting the service
         shell: powershell
         run: |
-          sc startbookscraperservice
+          sc start bookscraperservice
           sc queryex bookscraperservice
 
 
