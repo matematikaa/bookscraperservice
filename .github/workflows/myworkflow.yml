@@ -14,25 +14,18 @@ jobs:
       - name: Check out Repository
         uses: actions/checkout@v2
 
-      - name: Create Folder on Desktop
+      - name: Setup Conda Environment
         shell: powershell
         run: |
-          $DesktopPath = [System.Environment]::GetFolderPath('Desktop')
-          $FolderPath = Join-Path -Path $DesktopPath -ChildPath 'Eagle'
-          if (-Not (Test-Path $FolderPath)) {
-            New-Item -ItemType Directory -Path $FolderPath
-            Write-Output "Created folder: $FolderPath"
-          } else {
-            Write-Output "Folder already exists: $FolderPath"
-          }
+          # Ensure Conda is initialized. This assumes Conda has been added to PATH during runner setup.
+          conda init powershell
+          # Reactivate shell to enable conda commands
+          & $PROFILE
 
-      - name: Verify Folder Creation
+      - name: Activate Conda Environment
         shell: powershell
         run: |
-          $DesktopPath = [System.Environment]::GetFolderPath('Desktop')
-          $FolderPath = Join-Path -Path $DesktopPath -ChildPath 'Eagle'
-          if (Test-Path $FolderPath) {
-            Write-Output "Verification Successful: Folder found at $FolderPath"
-          } else {
-            Write-Output "Verification Failed: Folder not found at $FolderPath"
-          }
+          # Activate your environment. Replace `your_env_name` with your actual environment name.
+          conda activate your_env_name
+          # Print the active environment to verify
+          conda info
