@@ -47,7 +47,7 @@ jobs:
         run: |
           C:\Users\tk-work\Desktop\actions-runner\_work\bookscraperservice\bookscraperservice\dist\scrape.exe install
           sc query bookscraperservice
-          sc bookscraperservice start
+          sc start bookscraperservice
           sc query bookscraperservice
 
 
