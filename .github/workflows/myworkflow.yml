@@ -27,4 +27,7 @@ jobs:
           conda activate tkworkenv
           # Print the active environment to verify
           conda info
+          conda info --envs
+
+      
           
