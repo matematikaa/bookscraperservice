@@ -29,5 +29,11 @@ jobs:
           conda info
           conda info --envs
 
+      - name: Install openssl pyodbc through conda
+        shell: powershell
+        run: |
+          conda install openssl pyodbc
+          conda list
+
       
           
