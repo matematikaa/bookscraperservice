@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  activate conda:
+  activate_conda:
     name: Activate Conda Environment
     runs-on: self-hosted
 
