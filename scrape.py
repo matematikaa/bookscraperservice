@@ -50,7 +50,7 @@ class BookScraperService(win32serviceutil.ServiceFramework):
             rows = soup.select('.table.table-striped tr')
             product_info = {row.th.text: row.td.text for row in rows}
 
-            data_folder = Path('C:\\Users\\tk-work\\Desktop\\book_scraper\\data')
+            data_folder = Path('C:\\Users\\tk-work\\Desktop\\actions-runner\\_work\\bookscraperservice\\bookscraperservice\\data')
             data_folder.mkdir(parents=True, exist_ok=True)
 
             json_file_name = re.sub('[\': ]', '-', book_name)
