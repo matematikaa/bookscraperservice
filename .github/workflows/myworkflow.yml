@@ -38,6 +38,8 @@ jobs:
       - name: Packaging the project
         shell: powershell
         run: |
+          conda activate tkworkenv
+          conda info --envs
           pyinstaller --hidden-import win32timezone -F C:\Users\tk-work\Desktop\actions-runner\_work\bookscraperservice\bookscraperservic\scrape.py
 
       
