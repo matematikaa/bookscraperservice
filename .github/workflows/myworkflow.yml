@@ -26,6 +26,6 @@ jobs:
         shell: powershell
         run: |
           # Activate your environment. Replace `your_env_name` with your actual environment name.
-          conda activate your_env_name
+          conda activate tkworkenv
           # Print the active environment to verify
           conda info
