@@ -6,8 +6,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  create_folder:
-    name: Create Folder on Desktop
+  activate conda:
+    name: Activate Conda Environment
     runs-on: self-hosted
 
     steps:
@@ -18,7 +18,7 @@ jobs:
         shell: powershell
         run: |
           # Ensure Conda is initialized. This assumes Conda has been added to PATH during runner setup.
-          conda init powershell
+          conda init
           # Reactivate shell to enable conda commands
           & $PROFILE
 
