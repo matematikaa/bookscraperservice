@@ -19,6 +19,7 @@ jobs:
         shell: powershell
         run: |
           conda init powershell
+          $PROFILE
 
       - name: Activate Conda Environment
         shell: powershell
