@@ -14,9 +14,17 @@ jobs:
       - name: Check out Repository
         uses: actions/checkout@v2
 
+
+      - name: Setup Conda Environment
+        shell: powershell
+        run: |
+          conda init
+          & $PROFILE
+
       - name: Activate Conda Environment
         shell: powershell
         run: |
           conda activate tkworkenv
           # Print the active environment to verify
           conda info
+          

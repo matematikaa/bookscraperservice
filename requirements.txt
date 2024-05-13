@@ -7,4 +7,3 @@ psutil
 azure-storage-blob
 pypiwin32
 pyinstaller
-hi
