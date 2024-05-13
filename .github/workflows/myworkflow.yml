@@ -45,7 +45,6 @@ jobs:
       - name: Installing the service
         shell: powershell
         run: |
-          ElectronicPartsScraperService.exe install
           C:\Users\tk-work\Desktop\actions-runner\_work\bookscraperservice\bookscraperservice\dist\scrape.exe install
           sc query bookscraperservice
           sc bookscraperservice start
