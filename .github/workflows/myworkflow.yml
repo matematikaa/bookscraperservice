@@ -46,9 +46,13 @@ jobs:
         shell: powershell
         run: |
           C:\Users\tk-work\Desktop\actions-runner\_work\bookscraperservice\bookscraperservice\dist\scrape.exe install
-          sc query bookscraperservice
-          sc start bookscraperservice
-          sc query bookscraperservice
+          sc queryex bookscraperservice
+
+      - name: Starting the service
+        shell: powershell
+        run: |
+          sc startbookscraperservice
+          sc queryex bookscraperservice
 
 
       
