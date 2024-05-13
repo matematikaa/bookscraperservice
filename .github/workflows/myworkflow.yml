@@ -18,13 +18,22 @@ jobs:
       - name: Setup, Activate Conda Environment and Install Dependencies
         shell: powershell
         run: |
+          #separate this at another step ?
           conda init powershell
-          $PROFILE
+
+          # Activate or create environment. Currently assumes environment will exist
+          # Since we will manually install anaconda3/miniconda3, we will just simply
+          # create an env with python version = x. So when we run this workflow
+          # the env we're pointing should already exists.
+
           conda activate tkworkenv
           conda info
           conda info --envs
           conda install openssl pyodbc
           python -m pip install -r requirements.txt
           conda list
+          pywin32_postinstall.py -install
+
+
       
           
