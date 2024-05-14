@@ -3,6 +3,10 @@ name: My Workflow
 
 
 on:
+  push:
+    branches:
+      - 'main'
+
   workflow_dispatch:
 
 jobs:
