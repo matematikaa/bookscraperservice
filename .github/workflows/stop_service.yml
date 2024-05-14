@@ -1,12 +1,11 @@
-# .github/workflows/install-windows-service.yml
+# .github/workflows/stop_service.yml
 name: Stop Service
-
 
 on:
   workflow_dispatch:
 
 jobs:
-  activate_conda:
+  stop_service:
     name: Stop service
     runs-on: self-hosted
 
@@ -15,4 +14,4 @@ jobs:
         shell: powershell
         run: |
           Stop-Service -Name bookscraperservice
-          Get-Service -Name bookscraperservice          
+          Get-Service -Name bookscraperservice
