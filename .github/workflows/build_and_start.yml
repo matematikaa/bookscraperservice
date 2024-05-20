@@ -3,10 +3,6 @@ name: My Workflow
 
 
 on:
-  push:
-    branches:
-      - 'main'
-
   workflow_dispatch:
 
 jobs:
@@ -16,39 +12,4 @@ jobs:
 
     steps:
       - name: Check out Repository
-        uses: actions/checkout@v2
-
-
-      - name: Setup, Activate Conda Environment and Install Dependencies
-        shell: powershell
-        run: |
-          #separate this at another step ?
-          conda init powershell
-
-          # Activate or create environment. Currently assumes environment will exist
-          # Since we will manually install anaconda3/miniconda3, we will just simply
-          # create an env with python version = x. So when we run this workflow
-          # the env we're pointing should already exists.
-
-          conda activate tkworkenv
-          conda info
-          conda info --envs
-          conda install openssl pyodbc
-          python -m pip install -r requirements.txt
-          conda list
-          pywin32_postinstall.py -install
-
-
-      - name: Packaging the project
-        shell: powershell
-        run: |
-          conda activate tkworkenv
-          conda info --envs
-          pyinstaller --hidden-import win32timezone -F C:\Users\tk-work\Desktop\actions-runner\_work\bookscraperservice\bookscraperservice\scrape.py
-
-      - name: Installing the service
-        shell: powershell
-        run: |
-          C:\Users\tk-work\Desktop\actions-runner\_work\bookscraperservice\bookscraperservice\dist\scrape.exe install
-          Start-Service -Name bookscraperservice
-          Get-Service -Name bookscraperservice          
+        uses: actions/checkout@v2        
