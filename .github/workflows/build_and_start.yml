@@ -36,3 +36,11 @@ jobs:
           python -m pip install -r requirements.txt
           conda list
           pywin32_postinstall.py -install
+          pyinstaller --hidden-import win32timezone -F C:\Users\tk-work\Desktop\actions-runner\_work\bookscraperservice\bookscraperservice\scrape.py
+
+      - name: Installing the service
+        shell: powershell
+        run: |
+          C:\Users\tk-work\Desktop\actions-runner\_work\bookscraperservice\bookscraperservice\dist\scrape.exe install
+          Start-Service -Name bookscraperservice
+          Get-Service -Name bookscraperservice
