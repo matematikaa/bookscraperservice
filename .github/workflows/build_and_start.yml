@@ -13,3 +13,26 @@ jobs:
     steps:
       - name: Check out Repository
         uses: actions/checkout@v2        
+
+      - name: Setup, Activate Conda Environment and Install Dependencies
+        shell: powershell
+        run: |
+          conda init powershell
+          #Assumes conda is installed and available in path
+          $envName = "scraperenv"
+          $envExists = conda env list | Select-String -Pattern $envName
+          if (-not $envExists) {
+            Write-Output "Creating environment"
+            conda create -n scraperenv python=3.12.2 -y
+            conda activate $envName
+            # pip install -r requirements.txt
+          } else {
+            Write-Output "Environment exists"
+            conda activate $envName
+          }
+          conda info
+          conda info --envs
+          conda install openssl pyodbc
+          python -m pip install -r requirements.txt
+          conda list
+          pywin32_postinstall.py -install
